@@ -6,6 +6,8 @@ import Link from "next/link";
 import heart from "../../../../public/icons/Heart.svg";
 import msg from "../../../../public/icons/Message circle.svg";
 import loc from "../../../../public/icons/Location.svg";
+import { useRouter } from "next/router";
+import N from "next/navigation";
 
 const Header: React.FC = () => {
   return (
