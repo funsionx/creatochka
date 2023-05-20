@@ -7,10 +7,10 @@ const httpPost = async (url: string, data: any) => {
     .post(url, data, {
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers":
-          "Origin, Content-Type, Authorization, Access-Control-Allow-Headers, Access-Control-Allow-Origin",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Allowed-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
       },
     })
     .then((response) => {

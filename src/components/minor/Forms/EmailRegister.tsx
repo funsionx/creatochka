@@ -27,11 +27,7 @@ const EmailRegister = (props: Props) => {
       >
         <input {...(register("ФИО"), { required: true })} />
         <input {...register("lastName", { required: true })} />
-        <input
-          {...register("Email", {
-            pattern: /[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/,
-          })}
-        />
+        <input {...register("Email")} />
         <button type="submit">submit</button>
       </form>
     </>

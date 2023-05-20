@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FormEventHandler, useState } from "react";
-import Input from "../Inputs/CustomInput";
+import CustomInput from "../Inputs/CustomInput";
 import httpPost from "@/components/api/HttpPost";
 
 type Props = {};
@@ -16,17 +16,18 @@ const EmailRegister2 = (props: Props) => {
       email: email,
       pass: pass,
     });
+    console.log(JSON.stringify({ email: email, pass: pass }));
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input
+      <CustomInput
         type={"text"}
         label={"email"}
         valueState={[email, setEmail]}
         trimmed={false}
       />
-      <Input
+      <CustomInput
         type={"password"}
         label={"pass"}
         valueState={[pass, setPass]}
