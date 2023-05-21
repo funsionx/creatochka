@@ -1,13 +1,19 @@
 @tailwind base;
 @layer base {
   h1 {
-    @apply lg:text-[48px] md:text-[40px] font-extrabold;
+    @apply lg:text-[48px] md:text-[40px] font-bold;
+  }
+  h2 {
+    @apply lg:text-[40px] md:text-[32px] font-bold;
   }
   h6 {
-    @apply text-[18px]
+    @apply text-[16px]
   }
   p {
     @apply text-[14px] text-gray-500
+  }
+  button {
+    @apply font-bold
   }
 }
 @tailwind components;

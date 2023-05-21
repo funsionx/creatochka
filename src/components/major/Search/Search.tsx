@@ -23,18 +23,22 @@ const Search: React.FC = (props: Props) => {
           <div className="mx-[40px] mb-[24px] flex justify-around gap-[20px]">
             <CategorySelect
               options={options}
-              twStyle={"w-[360px] h-[60px]"}
+              twStyles={"min-w-[100%] h-[60px]"}
               categoryType={"Тип мероприятия"}
+              isMulti={true}
+              blockStyles={"min-w-[30%]"}
             />
             <CategorySelect
               options={options}
-              twStyle={"w-[360px] h-[60px]"}
+              twStyles={"min-w-[100%] h-[60px]"}
               categoryType={"Расположение"}
+              blockStyles={"min-w-[30%]"}
             />
             <CategorySelect
               options={options}
-              twStyle={"w-[360px] h-[60px]"}
+              twStyles={"min-w-[100%] h-[60px]"}
               categoryType={"Дата аренды"}
+              blockStyles={"min-w-[30%]"}
             />
           </div>
           <div className="flex justify-end gap-[20px]">
