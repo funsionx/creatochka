@@ -3,6 +3,8 @@ export interface ICategorySelect {
     value: string;
     label: string;
   }[];
-  twStyle: string;
+  twStyles: string;
+  blockStyles: string;
   categoryType: string;
+  isMulti?: boolean
 }

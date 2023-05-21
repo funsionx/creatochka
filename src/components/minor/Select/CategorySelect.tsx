@@ -11,16 +11,17 @@ import Select from "react-select";
 // ];
 
 const CategorySelect: React.FC<ICategorySelect> = (props) => {
-  const { options, twStyle, categoryType } = props;
+  const { options, twStyles, categoryType, isMulti, blockStyles } = props;
   return (
-    <div className="flex flex-col">
+    <div className={"flex flex-col " + blockStyles}>
       <p>{categoryType}</p>
       <Select
         options={options}
         isClearable={true}
         isSearchable={true}
         defaultValue={options[0]}
-        className={`${twStyle}`}
+        className={`${twStyles}`}
+        isMulti={isMulti}
       />
     </div>
   );
