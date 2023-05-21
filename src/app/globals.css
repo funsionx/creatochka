@@ -6,6 +6,9 @@
   h2 {
     @apply lg:text-[40px] md:text-[32px] font-bold;
   }
+  h5 {
+    @apply text-[18px]
+  }
   h6 {
     @apply text-[16px]
   }

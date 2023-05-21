@@ -20,7 +20,7 @@ const Header: React.FC = () => {
         </Link>
         <Link
           href={"/location"}
-          className="flex rounded-[24px] bg-grey-temp px-[14px] py-[10px]"
+          className="flex rounded-[24px] bg-gray-temp px-[14px] py-[10px]"
         >
           <Image src={loc} alt={"pic"} />
           <h6 className="ml-[8px]">Москва</h6>
