@@ -12,12 +12,13 @@ import { FC } from "react";
 //onClick - setIsBlurred(true) + setIsClicked(true) + textType("text")
 
 const CustomInput: FC<ICustomInput> = (props) => {
-  const { type, label, valueState, trimmed } = props;
+  const { type, label, valueState, trimmed, placeholder } = props;
   //eslint-disable-next-line react-hooks/rules-of-hooks
   const [initValue, handleValueChange] = valueState || useState("");
 
   const [textType, setTextType] = useState("");
-  const [show, setShow] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const [showLabel, setShowLabel] = useState(false);
 
   const value = trimmed ? initValue.trim() : initValue;
 
@@ -27,30 +28,36 @@ const CustomInput: FC<ICustomInput> = (props) => {
     handleValueChange(e.target.value);
   };
 
+  const handleFocus = () => {
+    setShowLabel(!showLabel)
+  }
+
   const blur = () => {
-    setShow(true);
+    setShowButton(true);
     setTextType("password");
   };
 
   const unBlur = () => {
-    setShow(false);
+    setShowButton(false);
     setTextType("text");
   };
 
   useEffect(() => {
     setTextType("password");
-    setShow(true);
+    setShowButton(true);
   }, []);
 
   return type !== "password" ? (
     <div className="max-w-fit">
       <label htmlFor={label} className="flex flex-col">
-        <p>{label}</p>
+        {showLabel ? <p>{label}</p> : null}
         <input
           className="bg-red-500"
           value={value}
           type={type}
           onChange={handleChange}
+          placeholder={placeholder}
+          onFocus={handleFocus}
         />
       </label>
     </div>
@@ -65,7 +72,7 @@ const CustomInput: FC<ICustomInput> = (props) => {
           onChange={handleChange}
         />
       </label>
-      {show ? (
+      {showButton ? (
         <button onClick={unBlur} type="button">
           Показать
         </button>

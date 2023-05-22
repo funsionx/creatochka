@@ -55,12 +55,12 @@ const RoomCard: React.FC<IRoomCard> = (props) => {
         <h6>{timeToTravel} мин</h6>
       </div>
       <div className="flex">
-        {Object.values(tags).map((val: string, id) => (
+        {Object.values(tags).map((tag: number | string, id) => (
           <div
             key={id}
             className="mr-[12px] rounded-[10px] bg-[#F5F5F5] px-[12px] py-[10px]"
           >
-            {val}
+            {tag}
           </div>
         ))}
       </div>

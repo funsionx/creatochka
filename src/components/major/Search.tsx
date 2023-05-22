@@ -1,19 +1,33 @@
 import React from "react";
 import CategorySelect from "@/components/minor/CategorySelect";
 import { LargeButton } from "@/components/minor/Buttons";
-import Subtract from "../../../../public/icons/Subtract.svg";
-import Link from "next/link";
+import Subtract from "../../../public/icons/Subtract.svg";
+import Image from "next/image";
 
-type Props = {};
 const options = [
   { value: "chocolate", label: "Chocolate" },
   { value: "strawberry", label: "Strawberry" },
   { value: "vanilla", label: "Vanilla" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "vanilsa", label: "Vanilla" },
+  { value: "vanilca", label: "Vanilla" },
+  { value: "vanillxa", label: "Vanilla" },
+  { value: "vanillax", label: "Vanilla" },
+  { value: "vanillca", label: "Vanilla" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "vanilla", label: "Vanilla" },
+  { value: "vanilla", label: "Vanilla" },
 ];
 
-const Search: React.FC = (props: Props) => {
+const Search: React.FC = () => {
   return (
-    <main className="min-w-full rounded-[24px] bg-gray-temp p-[65px]">
+    <main className="min-w-full rounded-[24px] bg-gray-5 p-[65px]">
       <h1 className="mb-[16px] max-w-[70%] text-left text-black-text">
         Аренда городских пространств для мероприятий в Москве
       </h1>
@@ -26,10 +40,10 @@ const Search: React.FC = (props: Props) => {
           <div className="mx-[40px] mb-[24px] flex justify-around gap-[20px]">
             <CategorySelect
               options={options}
-              twStyles={"min-w-[100%] h-[60px]"}
+              twStyles={"min-w-[100%] min-h-[60px]"}
               categoryType={"Тип мероприятия"}
               isMulti={true}
-              blockStyles={"min-w-[30%]"}
+              blockStyles={"min-w-[30%] "}
             />
             <CategorySelect
               options={options}
@@ -47,9 +61,9 @@ const Search: React.FC = (props: Props) => {
           <div className="flex justify-end gap-[20px]">
             <LargeButton
               type="button"
-              twStyles="bg-blue-secondary text-blue-primary"
+              twStyles="bg-blue-secondary text-blue-primary flex gap-[9px]"
             >
-              {/* ИКОНКА С ЛОКАЦИЕЙ */}
+              <Image src={Subtract} alt={"pic"} />
               Показать на карте
             </LargeButton>
             <LargeButton type="submit" twStyles="bg-blue-primary text-white">

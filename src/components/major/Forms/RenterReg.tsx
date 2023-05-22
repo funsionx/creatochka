@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FormEventHandler, useState } from "react";
-import CustomInput from "../CustomInput";
+import CustomInput from "../../minor/CustomInput";
 import httpPost from "@/components/api/HttpPost";
 
 type Props = {};
@@ -9,13 +9,18 @@ type Props = {};
 const EmailRegister2 = (props: Props) => {
   const [pass, setPass] = useState("");
   const [email, setEmail] = useState("");
+  const [fio, setFio] = useState("");
+  const [phone, setPhone] = useState("");
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     httpPost("https://rent.creatochka.cooldev.pro/api/renter/registration", {
+      fio: fio,
       email: email,
       pass: pass,
+      phone: phone,
     });
+    // fetch("https://rent.creatochka.cooldev.pro/api/renter/registration")
     console.log(JSON.stringify({ email: email, pass: pass }));
   };
 
@@ -23,15 +28,31 @@ const EmailRegister2 = (props: Props) => {
     <form onSubmit={handleSubmit}>
       <CustomInput
         type={"text"}
-        label={"email"}
-        valueState={[email, setEmail]}
+        label={"Фио"}
+        valueState={[fio, setFio]}
         trimmed={false}
+        placeholder={"Фио"}
+      />
+      <CustomInput
+        type={"text"}
+        label={"Почта"}
+        valueState={[email, setEmail]}
+        trimmed={true}
+        placeholder={"Фио"}
+      />
+      <CustomInput
+        type={"text"}
+        label={"Номер телефона"}
+        valueState={[phone, setPhone]}
+        trimmed={true}
+        placeholder={"Фио"}
       />
       <CustomInput
         type={"password"}
-        label={"pass"}
+        label={"Пароль"}
         valueState={[pass, setPass]}
-        trimmed={false}
+        trimmed={true}
+        placeholder={"Фио"}
       />
       <button type="submit">asdfasd</button>
     </form>

@@ -3,10 +3,11 @@ import RoomCard from "@/components/minor/RoomCard";
 import test from "../../public/testPics/img.svg";
 
 const tags = {
-  peopleQuantity: "до 50 человек",
-  area: "140 м2",
+  peopleQuantity: 50,
+  area: 140,
   parking: "Парковка отсутствует",
 };
+
 export default function Home() {
   return (
     <>

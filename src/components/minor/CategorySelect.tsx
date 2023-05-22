@@ -20,7 +20,15 @@ const CategorySelect: React.FC<ICategorySelect> = (props) => {
         isClearable={true}
         isSearchable={true}
         defaultValue={options[0]}
-        className={`${twStyles}`}
+        className={"hover:bg-gray-5" + twStyles}
+        theme={(theme) => ({
+          ...theme,
+          borderRadius: 12,
+        })}
+        classNames={{
+          control: (state) =>
+            state.isFocused ? "border-blue-primary" : "border-none",
+        }}
         isMulti={isMulti}
       />
     </div>

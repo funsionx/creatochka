@@ -4,7 +4,7 @@
     @apply lg:text-[48px] md:text-[40px] font-bold;
   }
   h2 {
-    @apply lg:text-[40px] md:text-[32px] font-bold;
+    @apply text-[36px] font-bold;
   }
   h5 {
     @apply text-[18px]

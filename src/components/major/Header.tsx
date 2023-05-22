@@ -32,7 +32,7 @@ const Header: React.FC = () => {
       <nav className="flex items-center gap-5">
         <Image src={heart} alt={"like button"} />
         <Image src={msg} alt={"message circle"} />
-        <MediumButton twStyles="text-white bg-green-primary">
+        <MediumButton twStyles="text-white bg-green-secondary">
           Добавить площадку
         </MediumButton>
         <MediumButton
