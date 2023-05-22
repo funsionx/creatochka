@@ -4,11 +4,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import heart from "../../../../public/icons/Heart.svg";
-import msg from "../../../../public/icons/Message circle.svg";
-import loc from "../../../../public/icons/Location.svg";
+import heart from "../../../public/icons/Heart.svg";
+import msg from "../../../public/icons/Message circle.svg";
+import loc from "../../../public/icons/Location.svg";
 import { useRouter } from "next/navigation";
-import { MediumButton } from "@/components/minor/Buttons/Buttons";
+import { MediumButton } from "@/components/minor/Buttons";
 
 const Header: React.FC = () => {
   const router = useRouter();

@@ -1,6 +1,6 @@
 import React from "react";
-import CategorySelect from "@/components/minor/Select/CategorySelect";
-import { LargeButton } from "@/components/minor/Buttons/Buttons";
+import CategorySelect from "@/components/minor/CategorySelect";
+import { LargeButton } from "@/components/minor/Buttons";
 import Subtract from "../../../../public/icons/Subtract.svg";
 import Link from "next/link";
 

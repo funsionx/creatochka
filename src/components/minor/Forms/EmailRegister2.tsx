@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FormEventHandler, useState } from "react";
-import CustomInput from "../Inputs/CustomInput";
+import CustomInput from "../CustomInput";
 import httpPost from "@/components/api/HttpPost";
 
 type Props = {};

@@ -16,7 +16,7 @@
     @apply text-[14px] text-gray-500
   }
   button {
-    @apply font-bold
+    @apply font-bold text-[16px]
   }
 }
 @tailwind components;

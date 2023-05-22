@@ -1,6 +1,6 @@
 import EmailRegister from "@/components/minor/Forms/EmailRegister";
 import EmailRegister2 from "@/components/minor/Forms/EmailRegister2";
-import Input from "@/components/minor/Inputs/CustomInput";
+import Input from "@/components/minor/CustomInput";
 import { NextPage } from "next";
 import React from "react";
 
