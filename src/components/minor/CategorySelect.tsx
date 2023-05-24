@@ -8,7 +8,7 @@ const OnlyCategorySelect: React.FC<OnlyCategorySelectT> = (props) => {
   //eslint-disable react-hooks/rules-of-hooks
   const [selected, setSelected] =
     valueState || React.useState();
-
+//todo: work with types
   const handleChange = (
     e: any
   ) => {
@@ -46,7 +46,7 @@ const MulCategorySelect: React.FC<MulCategorySelectT> = (props) => {
   //eslint-disable-next-line react-hooks/rules-of-hooks
   const [selectedValue, setSelectedValue] =
     valueMulState || React.useState<[{value: string}]>([{value: 'lol'}]);
-
+//todo: work with types
   const handleMulChange = (e: any) => {
     setSelectedValue(Array.isArray(e) ? e.map((x) => x.value) : []);
   };
@@ -54,13 +54,14 @@ const MulCategorySelect: React.FC<MulCategorySelectT> = (props) => {
     <div className={"flex flex-col " + blockStyles}>
       <p>{categoryType}</p>
       <Select
-        className="dropdown"
+        className={twStyles}
         placeholder="Select Option"
         //fix !!!!
-        //@ts-ignore-next-line
-        value={options.filter((obj) => selectedValue.includes(obj.value))} // set selected values
-        options={options} // set list of the data
-        onChange={handleMulChange} // assign onChange function
+        //@ts-ignore-next-line 
+        //todo: work with types
+        value={options.filter((obj) => selectedValue.includes(obj.value))}
+        options={options}
+        onChange={handleMulChange}
         isMulti={true}
         defaultValue={options}
         isClearable

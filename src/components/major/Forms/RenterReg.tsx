@@ -20,8 +20,6 @@ const EmailRegister2 = (props: Props) => {
       password: pass,
       phone: phone,
     });
-    // fetch("https://rent.creatochka.cooldev.pro/api/renter/registration")
-    console.log(JSON.stringify({ email: email, pass: pass }));
   };
 
   return (
