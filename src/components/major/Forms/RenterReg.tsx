@@ -17,7 +17,7 @@ const EmailRegister2 = (props: Props) => {
     httpPost("https://rent.creatochka.cooldev.pro/api/renter/registration", {
       fio: fio,
       email: email,
-      pass: pass,
+      password: pass,
       phone: phone,
     });
     // fetch("https://rent.creatochka.cooldev.pro/api/renter/registration")
