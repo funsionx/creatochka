@@ -1,5 +1,7 @@
-import React from "react";
-import CategorySelect from "@/components/minor/CategorySelect";
+"use client";
+import React, { FormEventHandler } from "react";
+import { MulCategorySelect } from "@/components/minor/CategorySelect";
+import { OnlyCategorySelect } from "@/components/minor/CategorySelect";
 import { LargeButton } from "@/components/minor/Buttons";
 import Subtract from "../../../public/icons/Subtract.svg";
 import Image from "next/image";
@@ -7,25 +9,25 @@ import Image from "next/image";
 const options = [
   { value: "chocolate", label: "Chocolate" },
   { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "vanilsa", label: "Vanilla" },
-  { value: "vanilca", label: "Vanilla" },
-  { value: "vanillxa", label: "Vanilla" },
-  { value: "vanillax", label: "Vanilla" },
-  { value: "vanillca", label: "Vanilla" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "vanilla", label: "Vanilla" },
-  { value: "vanilla", label: "Vanilla" },
+  { value: "pop", label: "pop" },
+  { value: "popl", label: "popl" },
 ];
 
 const Search: React.FC = () => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    // httpPost("https://rent.creatochka.cooldev.pro/api/renter/registration", {
+    //   fio: fio,
+    //   email: email,
+    //   pass: pass,
+    //   phone: phone,
+    // });
+    // fetch("https://rent.creatochka.cooldev.pro/api/renter/registration")
+    console.log(value.value, value2.value, mulValues)
+  };
+  const [value, setValue] = React.useState<typeof options[0]>(options[0]);
+  const [value2, setValue2] = React.useState<typeof options[0]>(options[0]);
+  const [mulValues, setMulValues] = React.useState<typeof options>([]);
   return (
     <main className="min-w-full rounded-[24px] bg-gray-5 p-[65px]">
       <h1 className="mb-[16px] max-w-[70%] text-left text-black-text">
@@ -35,27 +37,29 @@ const Search: React.FC = () => {
         Арендуйте помещения для ваших занятий и мероприятий. В удобном месте. В
         удобное время.
       </h5>
-      <form method="post">
+      <form method="post" onSubmit={handleSubmit}>
         <div className="mb-[65px] rounded-[18px] bg-white p-[40px]">
           <div className="mx-[40px] mb-[24px] flex justify-around gap-[20px]">
-            <CategorySelect
+            <MulCategorySelect
               options={options}
               twStyles={"min-w-[100%] min-h-[60px]"}
               categoryType={"Тип мероприятия"}
-              isMulti={true}
               blockStyles={"min-w-[30%] "}
+              valueMulState={[mulValues, setMulValues]}
             />
-            <CategorySelect
+            <OnlyCategorySelect
               options={options}
               twStyles={"min-w-[100%] h-[60px]"}
               categoryType={"Расположение"}
               blockStyles={"min-w-[30%]"}
+              valueState={[value, setValue]}
             />
-            <CategorySelect
+            <OnlyCategorySelect
               options={options}
               twStyles={"min-w-[100%] h-[60px]"}
-              categoryType={"Дата аренды"}
               blockStyles={"min-w-[30%]"}
+              categoryType={"Дата аренды"}
+              valueState={[value2, setValue2]}
             />
           </div>
           <div className="flex justify-end gap-[20px]">
