@@ -5,13 +5,11 @@ import Select, { SelectOptionActionMeta } from "react-select";
 
 const OnlyCategorySelect: React.FC<OnlyCategorySelectT> = (props) => {
   const { options, twStyles, categoryType, blockStyles, valueState } = props;
-  //eslint-disable react-hooks/rules-of-hooks
   const [selected, setSelected] =
+    //eslint-disable-next-line react-hooks/rules-of-hooks
     valueState || React.useState();
-//todo: work with types
-  const handleChange = (
-    e: any
-  ) => {
+  //todo: work with types
+  const handleChange = (e: any) => {
     // console.log(e)
     setSelected(e);
   };
@@ -43,10 +41,10 @@ const OnlyCategorySelect: React.FC<OnlyCategorySelectT> = (props) => {
 
 const MulCategorySelect: React.FC<MulCategorySelectT> = (props) => {
   const { options, twStyles, categoryType, blockStyles, valueMulState } = props;
-  //eslint-disable-next-line react-hooks/rules-of-hooks
   const [selectedValue, setSelectedValue] =
-    valueMulState || React.useState<[{value: string}]>([{value: 'lol'}]);
-//todo: work with types
+    //eslint-disable-next-line react-hooks/rules-of-hooks
+    valueMulState || React.useState<[{ value: string }]>([{ value: "lol" }]);
+  //todo: work with types
   const handleMulChange = (e: any) => {
     setSelectedValue(Array.isArray(e) ? e.map((x) => x.value) : []);
   };
@@ -57,7 +55,7 @@ const MulCategorySelect: React.FC<MulCategorySelectT> = (props) => {
         className={twStyles}
         placeholder="Select Option"
         //fix !!!!
-        //@ts-ignore-next-line 
+        //@ts-ignore-next-line
         //todo: work with types
         value={options.filter((obj) => selectedValue.includes(obj.value))}
         options={options}
