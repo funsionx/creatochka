@@ -7,7 +7,10 @@ type CategorySelectT = {
     { value: string; label: string },
     (s: { value: string; label: string }) => void
   ];
-  valueMulState: [{ value: string, label: string }[], (s: { value: string, label: string }[]) => void];
+  valueMulState: [
+    { value: string; label: string }[],
+    (s: { value: string; label: string }[]) => void
+  ];
 };
 
 export type MulCategorySelectT = Omit<CategorySelectT, "valueState">;

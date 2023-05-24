@@ -1,6 +1,7 @@
 import Search from "@/components/major/Search";
 import RoomCard from "@/components/minor/RoomCard";
 import test from "../../public/testPics/img.svg";
+import Footer from "@/components/major/Footer";
 
 const tags = {
   peopleQuantity: 50,
@@ -23,6 +24,7 @@ export default function Home() {
         tags={tags}
         price={"От 1000 руб/ч"}
       />
+      <Footer />
     </>
   );
 }

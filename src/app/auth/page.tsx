@@ -1,16 +1,20 @@
-import EmailRegister from "@/components/major/Forms/EmailRegister";
-import RenterReg from "@/components/major/Forms/RenterReg";
-import Input from "@/components/minor/CustomInput";
-import { NextPage } from "next";
 import React from "react";
+import { NextPage } from "next";
+import OwnerReg from "@/components/major/Forms/OwnerReg";
+import RenterReg from "@/components/major/Forms/RenterReg";
+import AuthForm from "@/components/major/Forms/AuthForm";
+import Link from "next/link";
 
 type Props = {};
 
 const Auth: NextPage = (props: Props) => {
   return (
-    <div>
-      <RenterReg />
-    </div>
+    <main>
+      <AuthForm />
+      <Link href={"/reg"}>
+        <h5>Зарегестрироватся</h5>
+      </Link>
+    </main>
   );
 };
 
