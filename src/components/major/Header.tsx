@@ -25,7 +25,7 @@ const Header: React.FC = () => {
           <Image src={loc} alt={"pic"} />
           <h6 className="ml-[8px]">Москва</h6>
         </Link>
-        <Link href={"/location"}>Найти помещение</Link>
+        <Link href={"/catalog"}>Найти помещение</Link>
         <Link href={"/location"}>О сервисе</Link>
         <Link href={"/location"}>Статьи</Link>
       </nav>

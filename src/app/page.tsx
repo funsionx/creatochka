@@ -23,6 +23,7 @@ export default function Home() {
         timeToTravel={7}
         tags={tags}
         price={"От 1000 руб/ч"}
+        isHorizontal={false}
       />
       <Footer />
     </>

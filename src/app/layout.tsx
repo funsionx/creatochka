@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body className={inter.className && "m-auto max-w-[1300px]"}>
+      <body className={inter.className && "m-auto max-w-[1300px] bg-gray-4"}>
         <Header />
         {children}
       </body>

@@ -23,10 +23,10 @@ const Search: React.FC = () => {
     //   phone: phone,
     // });
     // fetch("https://rent.creatochka.cooldev.pro/api/renter/registration")
-    console.log(value.value, value2.value, mulValues)
+    console.log(value.value, value2.value, mulValues);
   };
-  const [value, setValue] = React.useState<typeof options[0]>(options[0]);
-  const [value2, setValue2] = React.useState<typeof options[0]>(options[0]);
+  const [value, setValue] = React.useState<(typeof options)[0]>(options[0]);
+  const [value2, setValue2] = React.useState<(typeof options)[0]>(options[0]);
   const [mulValues, setMulValues] = React.useState<typeof options>([]);
   return (
     <main className="min-w-full rounded-[24px] bg-gray-5 p-[65px]">
@@ -46,6 +46,7 @@ const Search: React.FC = () => {
               categoryType={"Тип мероприятия"}
               blockStyles={"min-w-[30%] "}
               valueMulState={[mulValues, setMulValues]}
+              placeholder={""}
             />
             <OnlyCategorySelect
               options={options}
@@ -53,6 +54,7 @@ const Search: React.FC = () => {
               categoryType={"Расположение"}
               blockStyles={"min-w-[30%]"}
               valueState={[value, setValue]}
+              placeholder={""}
             />
             <OnlyCategorySelect
               options={options}
@@ -60,6 +62,7 @@ const Search: React.FC = () => {
               blockStyles={"min-w-[30%]"}
               categoryType={"Дата аренды"}
               valueState={[value2, setValue2]}
+              placeholder={""}
             />
           </div>
           <div className="flex justify-end gap-[20px]">
