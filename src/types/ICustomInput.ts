@@ -4,4 +4,5 @@ export interface ICustomInput {
   valueState: [string, (s: string) => void];
   trimmed: boolean;
   placeholder: string;
+  twStyles?: string
 }

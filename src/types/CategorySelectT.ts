@@ -3,6 +3,8 @@ type CategorySelectT = {
   twStyles: string;
   blockStyles: string;
   categoryType: string;
+  isBoldCategory?: boolean;
+  placeholder: string;
   valueState: [
     { value: string; label: string },
     (s: { value: string; label: string }) => void

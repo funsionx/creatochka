@@ -13,6 +13,7 @@ export interface IRoomCard {
   timeToTravel: number;
   tags: Tag;
   price: string;
+  isHorizontal: boolean
 }
 
 // {
