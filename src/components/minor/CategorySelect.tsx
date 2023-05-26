@@ -1,5 +1,8 @@
 "use client";
-import { MulCategorySelectT, OnlyCategorySelectT } from "@/types/CategorySelectT";
+import {
+  MulCategorySelectT,
+  OnlyCategorySelectT,
+} from "@/types/CategorySelectT";
 import React, { ChangeEvent, ChangeEventHandler } from "react";
 import Select, { SelectOptionActionMeta } from "react-select";
 const customStyles = {
@@ -11,6 +14,11 @@ const customStyles = {
     minHeight: 60,
     border: state.isFocused ? "border-blue-primary" : "border-none",
   }),
+  //@ts-ignore
+  // option: (provided, state) => ({
+  //   ...provided,
+  //   fontSize: '16px', // adjust the font size as needed
+  // }),
 
   //@ts-ignore
   input: (provided, state) => ({
@@ -18,9 +26,9 @@ const customStyles = {
     margin: "0px",
   }),
   //@ts-ignore
-  indicatorSeparator: (state) => ({
-    display: "none",
-  }),
+  // indicatorSeparator: (state) => ({
+  //   display: "none",
+  // }),
 };
 
 const OnlyCategorySelect: React.FC<OnlyCategorySelectT> = (props) => {
@@ -79,10 +87,10 @@ const MulCategorySelect: React.FC<MulCategorySelectT> = (props) => {
   } = props;
   const [selectedValue, setSelectedValue] =
     //eslint-disable-next-line react-hooks/rules-of-hooks
-    valueMulState || React.useState<[{ value: string }]>();
+    valueMulState || React.useState();
   //todo: work with types
   const handleMulChange = (e: any) => {
-    setSelectedValue(Array.isArray(e) ? e.map((x) => x.value) : []);
+    setSelectedValue(e);
   };
   return (
     <div className={"flex flex-col " + blockStyles}>
@@ -93,11 +101,12 @@ const MulCategorySelect: React.FC<MulCategorySelectT> = (props) => {
         //fix !!!!
         //@ts-ignore-next-line
         //todo: work with types
-        value={options.filter((obj) => selectedValue.includes(obj.value))}
-        options={options}
+        // options.filter((obj) => selectedValue.includes(obj.value))
+        value={selectedValue}
+        options={options ? options : []}
         onChange={handleMulChange}
         isMulti={true}
-        defaultValue={options}
+        defaultValue={options ? options[0] : []}
         styles={customStyles}
         theme={(theme) => ({
           ...theme,

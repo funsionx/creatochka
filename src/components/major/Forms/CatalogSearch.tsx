@@ -1,29 +1,53 @@
 "use client";
+import FieldsRebuilder from "@/components/api/FieldsRebuilder";
+import HttpGet from "@/components/api/HttpGet";
 import httpPost from "@/components/api/HttpPost";
+import { LargeButton } from "@/components/minor/Buttons";
 import { MulCategorySelect } from "@/components/minor/CategorySelect";
 import CustomInput from "@/components/minor/CustomInput";
 import DateInput from "@/components/minor/DateInput";
-import React, { FormEventHandler, use, useState } from "react";
-import { ActionMeta, InputActionMeta } from "react-select";
-import Select from "react-select/dist/declarations/src/Select";
+import React, { FormEventHandler, useState } from "react";
 
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "pop", label: "pop" },
-  { value: "popl", label: "popl" },
-];
+async function getEvents() {
+  const res = await fetch(
+    `https://rent.creatochka.cooldev.pro/api/renter/options/event-types`
+  );
+  return res.json();
+}
 
 const CatalogSearch: React.FC = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    // await httpPost(
-    //   "https://rent.creatochka.cooldev.pro/api/owner/registration",
-    //   data
-    // );
-    console.log(JSON.stringify(data))
   };
-  
+
+  const {
+    data: eventsData,
+    isLoading,
+    isError,
+  } = HttpGet(
+    "https://rent.creatochka.cooldev.pro/api/renter/options/event-types"
+  );
+
+  const { data: facilitiesData } = HttpGet(
+    "https://rent.creatochka.cooldev.pro/api/renter/options/facilities"
+  );
+  const { data: rulesData } = HttpGet(
+    "https://rent.creatochka.cooldev.pro/api/renter/options/rules"
+  );
+  const { data: typeofRoomData } = HttpGet(
+    "https://rent.creatochka.cooldev.pro/api/renter/options/room-types"
+  );
+  const { data: typeofEventData } = HttpGet(
+    "https://rent.creatochka.cooldev.pro/api/renter/options/room-types"
+  );
+
+  const options = eventsData?.data.data.map(
+    (item: { name: string; id: string }) => ({
+      label: item.name,
+      value: item.id,
+    })
+  );
+
   const [typeOfRoom, setTypeOfRoom] = useState<typeof options>([]);
   const [date, setDate] = useState("");
   const [district, setDistrict] = useState<typeof options>([]);
@@ -39,24 +63,31 @@ const CatalogSearch: React.FC = () => {
   const [minsquare, setMinsquare] = useState("");
   const [maxsquare, setMaxsquare] = useState("");
 
-  const [mincost, setMincost] = useState("")
-  const [maxcost, setMaxcost] = useState("")
+  const [mincost, setMincost] = useState("");
+  const [maxcost, setMaxcost] = useState("");
 
   const [minpeople, setMinpeople] = useState("");
   const [maxpeople, setMaxpeople] = useState("");
 
-  const data = {
-    typeOfRoom: typeOfRoom,
-    district: district,
-    metro: metro,
-    date: date,
-
+  // const data = {
+  //   typeOfRoom: typeOfRoom,
+  //   district: district,
+  //   metro: metro,
+  //   date: date,
+  // };
+  if (isLoading) {
+    return <h1>LOADING</h1>;
   }
-
+  if (isError) {
+    return <p>Failed to load.</p>;
+  }
+  if (!eventsData) {
+    return <p>adsfsdf</p>;
+  }
   return (
     <aside className="max-w-[370px] space-y-[20px] rounded-[18px] bg-white px-[20px] py-[30px]">
       <MulCategorySelect
-        options={options}
+        options={FieldsRebuilder(typeofRoomData)}
         twStyles={"rounded-[12px] hover:bg-gray-5"}
         blockStyles={""}
         categoryType={"Тип помещения"}
@@ -162,7 +193,7 @@ const CatalogSearch: React.FC = () => {
       />
       <h3>Удалённость от метро</h3>
       <MulCategorySelect
-        options={options}
+        options={FieldsRebuilder(facilitiesData)}
         twStyles={""}
         blockStyles={""}
         categoryType={"Удобства"}
@@ -189,7 +220,7 @@ const CatalogSearch: React.FC = () => {
         placeholder={"Любые"}
       />
       <MulCategorySelect
-        options={options}
+        options={FieldsRebuilder(rulesData)}
         twStyles={""}
         blockStyles={""}
         categoryType={"Правила"}
@@ -207,7 +238,7 @@ const CatalogSearch: React.FC = () => {
         placeholder={"Любые"}
       />
       <MulCategorySelect
-        options={options}
+        options={FieldsRebuilder(typeofEventData)}
         twStyles={""}
         blockStyles={""}
         categoryType={"Тип мероприятия"}
@@ -215,8 +246,10 @@ const CatalogSearch: React.FC = () => {
         isBoldCategory={true}
         placeholder={"Любой"}
       />
+      <LargeButton twStyles={"bg-blue-primary text-white min-w-full"}>
+        Подобрать помещение
+      </LargeButton>
     </aside>
   );
 };
-
 export default CatalogSearch;

@@ -28,7 +28,6 @@ const DateInput: React.FC<IDateInput> = (props) => {
 
   const currentDate =
     date.getFullYear() + "-" + currentMonth() + "-" + currentDay();
-  console.log(value);
   return (
     <div>
       <p>Выберите дату доставки</p>
