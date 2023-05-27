@@ -1,8 +1,9 @@
 "use client";
-import FieldsRebuilder from "@/components/api/FieldsRebuilder";
+import AvailabilityRebuilder from "@/components/util/rebuilders/AvailabilityRebuilder";
+import FieldsRebuilder from "@/components/util/rebuilders/FieldsRebuilder";
 import HttpGet from "@/components/api/HttpGet";
 import httpPost from "@/components/api/HttpPost";
-import MetroRebuilder from "@/components/api/MetroRebuilder";
+import MetroRebuilder from "@/components/util/rebuilders/MetroRebuilder";
 import { LargeButton } from "@/components/minor/Buttons";
 import { MulCategorySelect } from "@/components/minor/CategorySelect";
 import CustomInput from "@/components/minor/CustomInput";
@@ -51,7 +52,6 @@ const CatalogSearch: React.FC = () => {
   const { data: eventsData } = HttpGet(
     "https://rent.creatochka.cooldev.pro/api/renter/options/event-types"
   );
-
   const { data: facilitiesData } = HttpGet(
     "https://rent.creatochka.cooldev.pro/api/renter/options/facilities"
   );
@@ -62,8 +62,12 @@ const CatalogSearch: React.FC = () => {
     "https://rent.creatochka.cooldev.pro/api/renter/options/room-types"
   );
   const { data: typeofEventData } = HttpGet(
-    "https://rent.creatochka.cooldev.pro/api/renter/options/room-types"
+    "https://rent.creatochka.cooldev.pro/api/renter/options/event-types"
   );
+  const { data: availabilityData } = HttpGet(
+    "https://rent.creatochka.cooldev.pro/api/renter/options/availability-types"
+  );
+
   const {
     data: metroData,
     isError,
@@ -125,12 +129,11 @@ const CatalogSearch: React.FC = () => {
     return <p>adsfsdf</p>;
   }
   return (
-    <aside className="max-w-[370px] rounded-[18px] bg-white px-[20px] py-[30px]">
+    <aside className="h-fit max-w-[370px] rounded-[18px] bg-white px-[20px] py-[30px]">
       <form onSubmit={handleSubmit} className="space-y-[20px]">
         <MulCategorySelect
           options={FieldsRebuilder(typeofRoomData)}
           twStyles={"rounded-[12px] hover:bg-gray-5"}
-          blockStyles={""}
           categoryType={"Тип помещения"}
           valueMulState={[typeOfRoom, setTypeOfRoom]}
           isBoldCategory={true}
@@ -138,9 +141,8 @@ const CatalogSearch: React.FC = () => {
         />
 
         <MulCategorySelect
-          options={options}
+          options={MetroRebuilder(metroData)}
           twStyles={""}
-          blockStyles={""}
           categoryType={"Метро"}
           valueMulState={[metro, setMetro]}
           isBoldCategory={true}
@@ -220,7 +222,6 @@ const CatalogSearch: React.FC = () => {
         <MulCategorySelect
           options={FieldsRebuilder(facilitiesData)}
           twStyles={""}
-          blockStyles={""}
           categoryType={"Удобства"}
           valueMulState={[comfort, setComfort]}
           isBoldCategory={true}
@@ -229,16 +230,14 @@ const CatalogSearch: React.FC = () => {
         <MulCategorySelect
           options={FieldsRebuilder(rulesData)}
           twStyles={""}
-          blockStyles={""}
           categoryType={"Правила"}
           valueMulState={[rules, setRules]}
           isBoldCategory={true}
           placeholder={"Любые"}
         />
         <MulCategorySelect
-          options={options}
+          options={AvailabilityRebuilder(availabilityData)}
           twStyles={""}
-          blockStyles={""}
           categoryType={"Доступность"}
           valueMulState={[availability, setAvailability]}
           isBoldCategory={true}
@@ -247,7 +246,6 @@ const CatalogSearch: React.FC = () => {
         <MulCategorySelect
           options={FieldsRebuilder(typeofEventData)}
           twStyles={""}
-          blockStyles={""}
           categoryType={"Тип мероприятия"}
           valueMulState={[typeOfEvent, setTypeOfEvent]}
           isBoldCategory={true}

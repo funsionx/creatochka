@@ -1,7 +1,7 @@
 type CategorySelectT = {
   options: { value: string; label: string }[];
-  twStyles: string;
-  blockStyles: string;
+  twStyles?: string;
+  blockStyles?: string;
   categoryType: string;
   isBoldCategory?: boolean;
   placeholder: string;

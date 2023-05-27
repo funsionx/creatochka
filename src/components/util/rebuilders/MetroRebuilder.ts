@@ -6,6 +6,7 @@ const MetroRebuilder = (data: AxiosResponse<any, any> | undefined) => {
     value: item.stationId,
     color: item.color,
     lineValue: item.lineValue,
+    railwayStation: item.railwayStation,
   }));
 };
 

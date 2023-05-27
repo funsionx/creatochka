@@ -10,7 +10,7 @@ const customStyles = {
   control: (base, state) => ({
     ...base,
     background: state.isFocused ? "white" : "#F5F5F7",
-    borderColor: "#9e9e9e",
+    // borderColor: "#9e9e9e",
     minHeight: 60,
     border: state.isFocused ? "border-blue-primary" : "border-none",
   }),
@@ -24,6 +24,7 @@ const customStyles = {
   input: (provided, state) => ({
     ...provided,
     margin: "0px",
+    border: "border-none"
   }),
   //@ts-ignore
   // indicatorSeparator: (state) => ({

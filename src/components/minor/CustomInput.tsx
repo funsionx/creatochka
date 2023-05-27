@@ -53,7 +53,7 @@ const CustomInput: FC<ICustomInput> = (props) => {
         <h5>{label}</h5>
         <input
           className={
-            "h-[60px] rounded-[12px] border-2 bg-gray-5 focus:border-blue-primary focus:bg-white " +
+            "h-[60px] rounded-[12px] hover:border-2 bg-gray-5 focus:border-blue-primary focus:bg-white " +
             twStyles
           }
           value={value}
