@@ -21,6 +21,7 @@ module.exports = {
         "green-secondary": "#34C164",
 
         yellow: "#EBC70B",
+        red: "#D83A30",
         "black-text": "#1A1C22",
         "gray-1": "#6A6C72",
         "gray-2": "#92949A",
