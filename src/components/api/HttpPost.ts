@@ -11,16 +11,14 @@ const showToastMessage = (e: string) => {
 
 const httpPost = async (url: string, data: any) => {
   //eslint-disable-next-line react-hooks/rules-of-hooks
-  const router = useRouter();
   await axios
     .post(url, data)
     .then((response) => {
-      if (response.status == 200) {
-        showToastMessage(response.data.message);
-      }
+      // if (response.status == 200) {
+      //   showToastMessage(response.data.message);
+      // }
       console.log(response);
     })
-    .then(() => setTimeout(() => router.push("/"), 3000))
     .catch((error) => {
       console.log(error);
     });

@@ -17,3 +17,7 @@ type CategorySelectT = {
 
 export type MulCategorySelectT = Omit<CategorySelectT, "valueState">;
 export type OnlyCategorySelectT = Omit<CategorySelectT, "valueMulState">;
+export type OptionsT = {
+  value: string,
+  label: string
+}[]
