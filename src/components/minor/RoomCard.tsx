@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { IRoomCard } from "@/types/IRoomCard";
+import { IRoomCard, Metro } from "@/types/IRoomCard";
 import Image from "next/image";
 import hide from "../../../public/icons/Hide.svg";
 import star from "../../../public/icons/Star.svg";
@@ -12,8 +12,7 @@ const RoomCard: React.FC<IRoomCard> = (props) => {
     rating,
     numOfFeedbacks,
     title,
-    metroStation,
-    timeToTravel,
+    metro,
     tags,
     price,
     isHorizontal,
@@ -57,19 +56,47 @@ const RoomCard: React.FC<IRoomCard> = (props) => {
         </div>
         <h5 className="font-bold text-blue-primary">{title}</h5>
         <div className="mb-[12px] flex gap-[7px]">
-          <h6>{metroStation}</h6>
-          <Image src={walkingMan} alt={"pic"} />
-          <h6>{timeToTravel} мин</h6>
+          {metro ? (
+            <>
+              <div className="flex items-center">
+                <span
+                  className="mr-2 h-2 w-2 rounded-full"
+                  style={{ backgroundColor: "#" + metro.color }}
+                ></span>
+                <h6>{metro.stationValue}</h6>
+              </div>
+              <Image src={walkingMan} alt={"pic"} />
+              <h6>{metro.timeTo} мин</h6>
+            </>
+          ) : null}
         </div>
-        <div className="flex">
-          {Object.values(tags).map((tag: number | string, id) => (
-            <div
-              key={id}
-              className="mr-[12px] rounded-[10px] bg-[#F5F5F5] px-[12px] py-[10px]"
-            >
-              {tag}
-            </div>
-          ))}
+        <div className="flex flex-wrap gap-3">
+          <div className="mr-[12px] rounded-[10px] bg-[#F5F5F5] px-[12px] py-[10px]">
+            {tags.area + " м²"}
+          </div>
+          <div className="mr-[12px] rounded-[10px] bg-[#F5F5F5] px-[12px] py-[10px]">
+            {tags.parking === "PAID_PARKING" ? "Платная парковка" : null}
+          </div>
+
+          <div className="mr-[12px] rounded-[10px] bg-[#F5F5F5] px-[12px] py-[10px]">
+            {/* {"Максимум " +
+              tags.peopleQuantity +
+              tags.peopleQuantity.toString() ==
+              "2" ||
+            "3" ||
+            "4"
+              ? "человека"
+              : "человек"} */}
+            {"Максимум " +
+              tags.peopleQuantity.toString() +
+              (tags.peopleQuantity === 2 ||
+              tags.peopleQuantity % 10 === 2 ||
+              tags.peopleQuantity === 3 ||
+              tags.peopleQuantity % 10 === 3 ||
+              tags.peopleQuantity % 10 === 4
+                ? " человека"
+                : " человек")}
+          </div>
         </div>
       </div>
     </section>
@@ -77,3 +104,5 @@ const RoomCard: React.FC<IRoomCard> = (props) => {
 };
 
 export default RoomCard;
+
+// tags.peopleQuantity === 0 || 1 || 5||6||7||8||9||10? "человек" : tags.peopleQuantity === 2||3||4 ? "человека"

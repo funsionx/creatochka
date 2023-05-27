@@ -19,12 +19,10 @@ export default function Home() {
         rating={4.7}
         numOfFeedbacks={2}
         title={"Камерный зал для выставок, лекций и кинопоказов"}
-        metroStation={"Юго-Западная"}
         timeToTravel={7}
         tags={tags}
         price={"От 1000 руб/ч"}
-        isHorizontal={false}
-      />
+        isHorizontal={false} metro={{}}       />
       <Footer />
     </>
   );

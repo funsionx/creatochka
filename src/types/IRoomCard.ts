@@ -5,17 +5,25 @@ interface Tag {
 }
 
 export interface IRoomCard {
-  cardImg: string;
+  cardImg: any;
   rating: number;
   numOfFeedbacks: number;
   title: string;
-  metroStation: string;
   timeToTravel: number;
   tags: Tag;
   price: string;
-  isHorizontal: boolean
+  isHorizontal: boolean;
+  metro: Metro;
 }
 
+export interface Metro {
+  stationValue?: string;
+  lineValue?: string;
+  color?: string;
+  distance?: number;
+  timeTo?: number;
+  railwayStation?: boolean;
+}
 // {
 //   cardImg: string;
 //   rating: number;
@@ -30,4 +38,3 @@ export interface IRoomCard {
 //   }
 //   price: string;
 // }
-
