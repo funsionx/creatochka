@@ -50,13 +50,16 @@ const CustomInput: FC<ICustomInput> = (props) => {
   return type !== "password" ? (
     <div className="max-w-fit">
       <label htmlFor={label} className="flex flex-col">
-        {label}
+        <h5>{label}</h5>
         <input
-          className={"h-[60px] rounded-[12px] border-2 bg-gray-5 focus:border-blue-primary focus:bg-white " + twStyles}
+          className={
+            "h-[60px] rounded-[12px] border-2 bg-gray-5 focus:border-blue-primary focus:bg-white " +
+            twStyles
+          }
           value={value}
           type={type}
           onChange={handleChange}
-          placeholder={placeholder}
+          placeholder={"  " + placeholder}
           onFocus={handleFocus}
         />
       </label>

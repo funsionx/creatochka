@@ -40,6 +40,7 @@ const OnlyCategorySelect: React.FC<OnlyCategorySelectT> = (props) => {
     valueState,
     placeholder,
   } = props;
+  //eslint-disable-next-line react-hooks/rules-of-hooks
   const [selected, setSelected] =
     //eslint-disable-next-line react-hooks/rules-of-hooks
     valueState || React.useState();
@@ -85,6 +86,7 @@ const MulCategorySelect: React.FC<MulCategorySelectT> = (props) => {
     isBoldCategory,
     placeholder,
   } = props;
+  //eslint-disable-next-line react-hooks/rules-of-hooks
   const [selectedValue, setSelectedValue] =
     //eslint-disable-next-line react-hooks/rules-of-hooks
     valueMulState || React.useState();
