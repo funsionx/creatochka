@@ -27,7 +27,7 @@ const Catalog: NextPage = () => {
         <section className="ml-[30px]">
           {roomsData?.data.data.map((item: ICard) => (
             <RoomCard
-              // key={item}
+              key={item.id}
               cardImg={img}
               rating={0}
               numOfFeedbacks={item.reviewsCount}
