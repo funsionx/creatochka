@@ -4,7 +4,7 @@ import {
   OnlyCategorySelectT,
 } from "@/types/CategorySelectT";
 import React, { ChangeEvent, ChangeEventHandler } from "react";
-import Select, { SelectOptionActionMeta } from "react-select";
+import Select, { SelectOptionActionMeta, components } from "react-select";
 const customStyles = {
   //@ts-ignore
   control: (base, state) => ({
@@ -85,6 +85,7 @@ const MulCategorySelect: React.FC<MulCategorySelectT> = (props) => {
     valueMulState,
     isBoldCategory,
     placeholder,
+    componentsData
   } = props;
   //eslint-disable-next-line react-hooks/rules-of-hooks
   const [selectedValue, setSelectedValue] =
@@ -115,9 +116,20 @@ const MulCategorySelect: React.FC<MulCategorySelectT> = (props) => {
           borderRadius: 12,
         })}
         isClearable
+        components={componentsData}
       />
     </div>
   );
 };
+
+const OptionLabel = (props: any) => (
+  <components.Option {...props} className="flex">
+    <span
+      className="h-1 w-1"
+      style={{ backgroundColor: "#" + props?.data?.data?.color }}
+    />
+    {props.data?.data?.label}
+  </components.Option>
+);
 
 export { OnlyCategorySelect, MulCategorySelect };

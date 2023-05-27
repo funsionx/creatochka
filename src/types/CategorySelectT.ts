@@ -5,6 +5,7 @@ type CategorySelectT = {
   categoryType: string;
   isBoldCategory?: boolean;
   placeholder: string;
+  componentsData?: any
   valueState: [
     { value: string; label: string },
     (s: { value: string; label: string }) => void

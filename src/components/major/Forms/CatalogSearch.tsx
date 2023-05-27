@@ -2,13 +2,30 @@
 import FieldsRebuilder from "@/components/api/FieldsRebuilder";
 import HttpGet from "@/components/api/HttpGet";
 import httpPost from "@/components/api/HttpPost";
+import MetroRebuilder from "@/components/api/MetroRebuilder";
 import { LargeButton } from "@/components/minor/Buttons";
 import { MulCategorySelect } from "@/components/minor/CategorySelect";
 import CustomInput from "@/components/minor/CustomInput";
 import DateInput from "@/components/minor/DateInput";
 import { OptionsT } from "@/types/CategorySelectT";
 import React, { FormEventHandler, useState } from "react";
-
+import { components } from "react-select";
+// Define custom option for color-coded circle with label and station name
+const ColorCircleOption = (props: any) => {
+  const [isZhd, setIsZhd] = useState(false);
+  return (
+    <components.Option {...props}>
+      <div className="flex items-center">
+        <span
+          className="mr-2 h-2 w-2 rounded-full"
+          style={{ backgroundColor: "#" + props.data.color }}
+        />
+        <div className="station-name">{props.data.label}</div>
+        {/* <div className="line-name">{props.data.lineValue}</div> */}
+      </div>
+    </components.Option>
+  );
+};
 const CatalogSearch: React.FC = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -18,12 +35,8 @@ const CatalogSearch: React.FC = () => {
   const handleDeleteAll = () => {
     setTypeOfRoom([]);
     setDate("");
-    setDistrict([]);
-    setRegion([]);
     setComfort([]);
     setMetro([]);
-    setEquipment([]);
-    setServices([]);
     setRules([]);
     setAvailability([]);
     setTypeOfEvent([]);
@@ -35,11 +48,7 @@ const CatalogSearch: React.FC = () => {
     setMaxcost("");
   };
 
-  const {
-    data: eventsData,
-    isLoading,
-    isError,
-  } = HttpGet(
+  const { data: eventsData } = HttpGet(
     "https://rent.creatochka.cooldev.pro/api/renter/options/event-types"
   );
 
@@ -55,27 +64,26 @@ const CatalogSearch: React.FC = () => {
   const { data: typeofEventData } = HttpGet(
     "https://rent.creatochka.cooldev.pro/api/renter/options/room-types"
   );
-  const { data: metroData } = HttpGet(
-    "https://rent.creatochka.cooldev.pro/api/renter/options/metro"
-  );
+  const {
+    data: metroData,
+    isError,
+    isLoading,
+  } = HttpGet("https://rent.creatochka.cooldev.pro/api/renter/options/metro");
 
-  console.log(metroData)
+  // console.log(metroData);
 
-  const options = eventsData?.data.data.map(
-    (item: { name: string; id: string }) => ({
-      label: item.name,
-      value: item.id,
-    })
-  );
+  const options = metroData?.data?.data?.map((item: any) => ({
+    label: item.stationValue,
+    value: item.stationId,
+    color: item.color,
+    lineValue: item.lineValue,
+    railwayStation: item.railwayStation,
+  }));
 
   const [typeOfRoom, setTypeOfRoom] = useState<OptionsT>([]);
   const [date, setDate] = useState("");
-  const [district, setDistrict] = useState<OptionsT>([]);
   const [metro, setMetro] = useState<OptionsT>([]);
-  const [region, setRegion] = useState<OptionsT>([]);
   const [comfort, setComfort] = useState<OptionsT>([]);
-  const [equipment, setEquipment] = useState<OptionsT>([]);
-  const [services, setServices] = useState<OptionsT>([]);
   const [rules, setRules] = useState<OptionsT>([]);
   const [availability, setAvailability] = useState<OptionsT>([]);
   const [typeOfEvent, setTypeOfEvent] = useState<OptionsT>([]);
@@ -91,7 +99,7 @@ const CatalogSearch: React.FC = () => {
 
   const data = {
     typeOfRoom: typeOfRoom.map((val) => val.value),
-    district: district.map((val) => val.value),
+    // district: district.map((val) => val.value),
     metro: metro.map((val) => val.value),
     date: date,
     mincost: mincost,
@@ -101,8 +109,8 @@ const CatalogSearch: React.FC = () => {
     minpeople: minpeople,
     maxpeople: maxpeople,
     facilities: comfort.map((val) => val.value),
-    equipment: equipment.map((val) => val.value),
-    services: services.map((val) => val.value),
+    // equipment: equipment.map((val) => val.value),
+    // services: services.map((val) => val.value),
     rules: rules.map((val) => val.value),
     typeOfEvent: typeOfEvent.map((val) => val.value),
   };
@@ -128,15 +136,7 @@ const CatalogSearch: React.FC = () => {
           isBoldCategory={true}
           placeholder={"Вcе типы"}
         />
-        <MulCategorySelect
-          options={FieldsRebuilder(eventsData)}
-          twStyles={""}
-          blockStyles={""}
-          categoryType={"Район"}
-          valueMulState={[district, setDistrict]}
-          isBoldCategory={true}
-          placeholder={"Все"}
-        />
+
         <MulCategorySelect
           options={options}
           twStyles={""}
@@ -145,6 +145,7 @@ const CatalogSearch: React.FC = () => {
           valueMulState={[metro, setMetro]}
           isBoldCategory={true}
           placeholder={"Любое"}
+          componentsData={{ Option: ColorCircleOption }}
         />
 
         <DateInput valueState={[date, setDate]} />
@@ -215,15 +216,6 @@ const CatalogSearch: React.FC = () => {
             />
           </div>
         </div>
-        <MulCategorySelect
-          options={options}
-          twStyles={""}
-          blockStyles={""}
-          categoryType={"Округ"}
-          valueMulState={[region, setRegion]}
-          isBoldCategory={true}
-          placeholder={"Любой"}
-        />
         <h3>Удалённость от метро</h3>
         <MulCategorySelect
           options={FieldsRebuilder(facilitiesData)}
@@ -231,24 +223,6 @@ const CatalogSearch: React.FC = () => {
           blockStyles={""}
           categoryType={"Удобства"}
           valueMulState={[comfort, setComfort]}
-          isBoldCategory={true}
-          placeholder={"Любые"}
-        />
-        <MulCategorySelect
-          options={options}
-          twStyles={""}
-          blockStyles={""}
-          categoryType={"Оборудование"}
-          valueMulState={[equipment, setEquipment]}
-          isBoldCategory={true}
-          placeholder={"Любое"}
-        />
-        <MulCategorySelect
-          options={options}
-          twStyles={""}
-          blockStyles={""}
-          categoryType={"Услуги"}
-          valueMulState={[services, setServices]}
           isBoldCategory={true}
           placeholder={"Любые"}
         />
