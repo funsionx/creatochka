@@ -1,15 +1,22 @@
 import React from "react";
 import IconButton from "../minor/IconButton";
+import Image from "next/image";
 import vk from "../../../public/icons/VK_black.svg";
+import wa from "../../../public/icons/WA.svg";
+import logo from "../../../public/icons/K..svg";
+import tg from "../../../public/icons/Telegram_black.svg";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
   return (
     <footer className="min-w-full rounded-[24px] bg-gray-5 p-[65px]">
       <section className="mb-[30px] flex justify-between">
         <div className="flex">
-          <h2 className="text-blue-primary">КРЕАТОЧКА</h2>
+          <Image src={logo} alt={"pic"} />
           <div className="ml-[56px] grid grid-cols-2">
-            <h6>Каталог помещений</h6>
+            <Link href={"/catalog"}>
+              <h6>Каталог помещений</h6>
+            </Link>
             <h6>Креативные кластеры</h6>
             <h6>О сервисе</h6>
             <h6>Владельцам площадок</h6>
@@ -25,8 +32,8 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex gap-[15px] rounded-[12px] bg-white px-[20px] py-[14px]">
             <IconButton href={"https://vk.ru"} img={vk} />
-            <IconButton href={"https://vk.ru"} img={vk} />
-            <IconButton href={"https://vk.ru"} img={vk} />
+            <IconButton href={"https://whatsapp.com"} img={wa} />
+            <IconButton href={"https://t.me.com"} img={tg} />
           </div>
         </div>
       </section>

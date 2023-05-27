@@ -6,7 +6,6 @@ import RenterReg from "@/components/major/Forms/RenterReg";
 const Register: NextPage = () => {
   return (
     <main>
-      <OwnerReg />
       <RenterReg />
     </main>
   );

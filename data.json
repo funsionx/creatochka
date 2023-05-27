@@ -1,0 +1,17 @@
+{
+  "typeOfRoom": [
+    "6bf3486b-540f-ac34-1d51-8ecbd7b542a2",
+    "440a483e-8ef8-d3f2-c429-f0f72f12a722"
+  ],
+  "district": ["2b868b28-155c-5b06-9d22-8a58fc473a1d"],
+  "metro": ["9bfc77f4-34df-d9d8-9fa3-9fc9b8af0371"],
+  "date": "",
+  "cost": ":",
+  "area": ":",
+  "people": ":",
+  "facilities": [],
+  "equipment": [],
+  "services": [],
+  "rules": [],
+  "typeOfEvent": []
+}
