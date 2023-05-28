@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 // тут импорт иконок и других зависимостей
 // Styles
-import "./tailwind.output.css"; убрать при необходимости
+import "./tailwind.output.css"; 
 
 const Owner = () => {
   const [lastName, setLastName] = useState("");
@@ -11,7 +11,7 @@ const Owner = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
   };
 
@@ -19,7 +19,7 @@ const Owner = () => {
     <div className="flex h-screen grid grid-cols-2">
       <div className="w-64 bg-white p-4">
         <div className="flex items-center mb-4">
-          <icon className="text-xl mr-2" />
+          {/* <icon className="text-xl mr-2" /> */}
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

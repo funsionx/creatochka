@@ -1,11 +1,11 @@
 import React, { FC, ReactNode } from "react";
 import Popup from "reactjs-popup";
 import AuthForm from "../major/Forms/AuthForm";
+import Link from "next/link";
 
 export interface AuthPopup {
   button: any;
 }
-
 
 const AuthPopup: FC<AuthPopup> = ({ button }) => {
   return (
@@ -14,10 +14,11 @@ const AuthPopup: FC<AuthPopup> = ({ button }) => {
       <Popup trigger={button} modal nested>
         {/* @ts-ignore */}
         {(close) => (
-          <div className="modal">
+          <div className="">
             <button className="close" onClick={close}>
               &times;
             </button>
+
             <AuthForm />
           </div>
         )}

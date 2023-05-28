@@ -1,8 +1,9 @@
-"use client"
+"use client";
 import httpPost from "@/components/api/HttpPost";
 import CustomInput from "@/components/minor/CustomInput";
 import { MediumButton } from "@/components/minor/Buttons";
 import React, { FormEventHandler, useState } from "react";
+import Link from "next/link";
 
 const AuthForm: React.FC = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -17,9 +18,12 @@ const AuthForm: React.FC = () => {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="flex justify-center items-center ">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow flex flex-col">
-        <h2 className="text-2xl mb-6">Вход</h2>
+    <div className="flex items-center justify-center ">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col rounded-lg bg-white p-8 shadow"
+      >
+        <h2 className="mb-6 text-2xl">Вход</h2>
         <CustomInput
           type="text"
           label="Email"
@@ -37,11 +41,17 @@ const AuthForm: React.FC = () => {
         <div className="mt-auto">
           <MediumButton
             type="submit"
-            twStyles="bg-blue-primary max-w-fit text-white mt-3"
+            twStyles="bg-blue-primary min-w-fit text-white mt-3"
           >
             Войти
           </MediumButton>
         </div>
+
+        <div className="my-[16px] h-0  w-full border" />
+
+        <Link href={"/reg"} className="">
+          Зарегестрироваться
+        </Link>
       </form>
     </div>
   );

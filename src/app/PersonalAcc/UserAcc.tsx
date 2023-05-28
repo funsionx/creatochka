@@ -10,7 +10,7 @@ const OwnerAcc = () => {
     <div className="flex flex-col bg-gray-300 md:flex-row h-screen">
       <div className="w-full md:w-64 bg-indigo-100 p-4">
         <div className="flex items-center mb-4">
-          <icon className="text-xl mr-2" />
+          {/* <icon className="text-xl mr-2" /> */}
           <h3 className="text-xl">User Name</h3>
         </div>
         <ul className="space-y-3">
