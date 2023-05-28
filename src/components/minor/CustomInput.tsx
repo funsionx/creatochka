@@ -8,9 +8,6 @@ import React, {
 } from "react";
 import { FC } from "react";
 
-//init state - setIsBlurred(false) + setIsClicked(false) + textType("password")
-//onClick - setIsBlurred(true) + setIsClicked(true) + textType("text")
-
 const CustomInput: FC<ICustomInput> = (props) => {
   const { type, label, valueState, trimmed, placeholder, twStyles } = props;
   //eslint-disable-next-line react-hooks/rules-of-hooks
@@ -53,7 +50,7 @@ const CustomInput: FC<ICustomInput> = (props) => {
         <h5>{label}</h5>
         <input
           className={
-            "h-[60px] rounded-[12px] hover:border-2 bg-gray-5 focus:border-blue-primary focus:bg-white " +
+            "h-[60px] rounded-[12px] bg-gray-5 hover:border-2 focus:border-blue-primary focus:bg-white " +
             twStyles
           }
           value={value}
@@ -65,22 +62,31 @@ const CustomInput: FC<ICustomInput> = (props) => {
       </label>
     </div>
   ) : (
-    <div className="flex rounded-[12px] border border-blue-300">
+    <div className="flex items-center gap-1 rounded-[12px]">
       <label htmlFor="password">
         <p>Введите пароль</p>
         <input
-          className="h-[60px] w-[270px] rounded-[12px] bg-gray-5"
+          className="h-[60px] rounded-[12px] bg-gray-5 hover:border-2 focus:border-blue-primary focus:bg-white "
           value={value}
           type={textType}
           onChange={handleChange}
+          placeholder={"  " + "Введите пароль"}
         />
       </label>
       {showButton ? (
-        <button onClick={unBlur} type="button">
+        <button
+          onClick={unBlur}
+          type="button"
+          className=" text-[14px] font-normal"
+        >
           Показать
         </button>
       ) : (
-        <button onClick={blur} type="button">
+        <button
+          onClick={blur}
+          type="button"
+          className=" text-[14px] font-normal"
+        >
           Скрыть
         </button>
       )}

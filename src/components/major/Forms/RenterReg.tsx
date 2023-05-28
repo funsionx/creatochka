@@ -30,42 +30,46 @@ const EmailRegister2: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="md:flex md:items-center md:w-full lg:w-2/3 md:mr-20 h-screen">
-        <div className="hidden md:block md:w-1/2 lg:w-2/3 m-4">
-          <Image src={pic} alt={"reg image"} className="w-full h-full object-cover" />
+    <div className="flex items-center justify-center">
+      <div className="h-screen md:mr-20 md:flex md:w-full md:items-center lg:w-2/3">
+        <div className="m-4 hidden md:block md:w-1/2 lg:w-2/3">
+          <Image
+            src={pic}
+            alt={"reg image"}
+            className="h-full w-full object-cover"
+          />
         </div>
       </div>
       <div className="md:w-1/2 lg:w-1/3">
-        <form onSubmit={handleSubmit} className=" p-5 rounded-lg ">
-          <h2 className="text-2xl mb-6">Регистрация</h2>
+        <form onSubmit={handleSubmit} className=" rounded-lg p-5 ">
+          <h2 className="mb-6 text-2xl">Регистрация</h2>
           <CustomInput
             type="text"
-            label="Фамилия"
+            label="Введите ФИО"
             valueState={[fio, setFio]}
             trimmed={false}
-            placeholder="Фамилия"
+            placeholder="ФИО"
           />
           <CustomInput
             type="text"
-            label="Email"
+            label="Введите почту"
             valueState={[email, setEmail]}
             trimmed={true}
             placeholder="Email"
           />
           <CustomInput
             type="text"
-            label="Телефон"
+            label="Введите телефон"
             valueState={[phone, setPhone]}
             trimmed={true}
             placeholder="Телефон"
           />
           <CustomInput
             type="password"
-            label="Пароль"
+            label="Введите пароль"
             valueState={[pass, setPass]}
             trimmed={true}
-            placeholder="Введите пароль"
+            placeholder="Пароль"
           />
           <MediumButton
             type="submit"

@@ -7,7 +7,7 @@ const AvailabilityRebuilder = (data: AxiosResponse<any, any> | undefined) => {
   }));
 };
 
-const Adapter = (item: string): string => {
+export const Adapter = (item: string): string => {
   return item === "AdaptabilityForPeopleInAWheelchair"
     ? "Приспособленность для людей в кресле-коляске"
     : item === "AdaptabilityForPeopleWithVisualImpairment"

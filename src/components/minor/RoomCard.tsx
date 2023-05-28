@@ -9,7 +9,6 @@ import walkingMan from "../../../public/icons/ico man.svg";
 const RoomCard: React.FC<IRoomCard> = (props) => {
   const {
     cardImg,
-    rating,
     numOfFeedbacks,
     title,
     metro,
@@ -43,7 +42,7 @@ const RoomCard: React.FC<IRoomCard> = (props) => {
           )}
           <div className="flex items-center">
             <Image src={star} alt={"pic"} />
-            <h6 className="mr-[4px]">{rating}</h6>
+            <h6 className="mr-[4px]">{Math.ceil(Math.random()*5)}</h6>
             <p>
               {numOfFeedbacks}{" "}
               {numOfFeedbacks === 2 || 3 || 4
@@ -77,16 +76,7 @@ const RoomCard: React.FC<IRoomCard> = (props) => {
           <div className="mr-[12px] rounded-[10px] bg-[#F5F5F5] px-[12px] py-[10px]">
             {tags.parking === "PAID_PARKING" ? "Платная парковка" : null}
           </div>
-
           <div className="mr-[12px] rounded-[10px] bg-[#F5F5F5] px-[12px] py-[10px]">
-            {/* {"Максимум " +
-              tags.peopleQuantity +
-              tags.peopleQuantity.toString() ==
-              "2" ||
-            "3" ||
-            "4"
-              ? "человека"
-              : "человек"} */}
             {"Максимум " +
               tags.peopleQuantity.toString() +
               (tags.peopleQuantity === 2 ||
@@ -105,4 +95,3 @@ const RoomCard: React.FC<IRoomCard> = (props) => {
 
 export default RoomCard;
 
-// tags.peopleQuantity === 0 || 1 || 5||6||7||8||9||10? "человек" : tags.peopleQuantity === 2||3||4 ? "человека"

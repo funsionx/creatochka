@@ -6,7 +6,6 @@ interface Tag {
 
 export interface IRoomCard {
   cardImg: any;
-  rating: number;
   numOfFeedbacks: number;
   title: string;
   timeToTravel: number;

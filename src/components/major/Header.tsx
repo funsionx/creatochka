@@ -9,6 +9,7 @@ import msg from "../../../public/icons/Message circle.svg";
 import loc from "../../../public/icons/Location.svg";
 import { useRouter } from "next/navigation";
 import { MediumButton } from "@/components/minor/Buttons";
+import AuthPopup from "../minor/AuthPopup";
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -20,9 +21,9 @@ const Header: React.FC = () => {
         </Link>
         <Link
           href={"/location"}
-          className="flex rounded-[24px] bg-gray-temp px-[14px] py-[10px]"
+          className="bg-gray-temp flex rounded-[24px] px-[14px] py-[10px]"
         >
-          <Image src={loc} alt={"pic"} width={20}/>
+          <Image src={loc} alt={"pic"} width={20} />
           <h6 className="ml-[8px]">Москва</h6>
         </Link>
         <Link href={"/catalog"}>Найти помещение</Link>
@@ -35,12 +36,14 @@ const Header: React.FC = () => {
         <MediumButton twStyles="text-white bg-green-secondary">
           Добавить площадку
         </MediumButton>
-        <MediumButton
-          twStyles="text-blue-primary bg-blue-secondary"
-          onClick={() => router.push("/auth")}
-        >
-          Войти
-        </MediumButton>
+
+        <AuthPopup
+          button={
+            <MediumButton twStyles="text-blue-primary bg-blue-secondary">
+              Войти
+            </MediumButton>
+          }
+        />
       </nav>
     </header>
   );

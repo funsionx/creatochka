@@ -31,12 +31,15 @@ const Search: React.FC = () => {
     console.log(value.values, value2.value, mulValues);
   };
   const [value, setValue] = React.useState<OptionsT>([]);
-  const [value2, setValue2] = React.useState<OptionT>({value: "", label: "Любая"});
+  const [value2, setValue2] = React.useState<OptionT>({
+    value: "",
+    label: "Любая",
+  });
   const [mulValues, setMulValues] = React.useState<OptionsT>([]);
-  
-  const {
-    data: eventsData,
-  } = HttpGet("https://rent.creatochka.cooldev.pro/api/renter/options/event-types");
+
+  const { data: eventsData } = HttpGet(
+    "https://rent.creatochka.cooldev.pro/api/renter/options/event-types"
+  );
   const {
     data: metroData,
     isError,
@@ -44,7 +47,7 @@ const Search: React.FC = () => {
   } = HttpGet("https://rent.creatochka.cooldev.pro/api/renter/options/metro");
 
   return (
-    <main className="min-w-full rounded-[24px] bg-gray-5 p-[65px]">
+    <main className="mb-[30px] min-w-full rounded-[24px] bg-gray-5 p-[65px]">
       <h1 className="mb-[16px] max-w-[70%] text-left text-black-text">
         Аренда городских пространств для мероприятий в Москве
       </h1>
@@ -70,7 +73,7 @@ const Search: React.FC = () => {
               blockStyles={"min-w-[30%]"}
               valueMulState={[value, setValue]}
               placeholder={"Любое"}
-              componentsData={{Option: ColorCircleOption}}
+              componentsData={{ Option: ColorCircleOption }}
             />
             <OnlyCategorySelect
               options={options}
@@ -86,7 +89,7 @@ const Search: React.FC = () => {
               type="button"
               twStyles="bg-blue-secondary text-blue-primary flex gap-[9px]"
             >
-              <Image src={Subtract} alt={"pic"} width={20}/>
+              <Image src={Subtract} alt={"pic"} width={20} />
               Показать на карте
             </LargeButton>
             <LargeButton type="submit" twStyles="bg-blue-primary text-white">

@@ -26,7 +26,6 @@ const CardsCatalog: React.FC = () => {
         <Link href={`/catalog/${item.id}`} key={item.id}>
           <RoomCard
             cardImg={img}
-            rating={0}
             numOfFeedbacks={item.reviewsCount}
             title={item.name}
             timeToTravel={item.nearestMetro?.timeTo}

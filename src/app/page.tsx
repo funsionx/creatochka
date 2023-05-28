@@ -14,7 +14,7 @@ export default function Home() {
     <>
       {/* <SuggestionLine /> */}
       <Search />
-      <RoomCard
+      {/* <RoomCard
         cardImg={test}
         rating={4.7}
         numOfFeedbacks={2}
@@ -22,7 +22,7 @@ export default function Home() {
         timeToTravel={7}
         tags={tags}
         price={"От 1000 руб/ч"}
-        isHorizontal={false} metro={{}}       />
+        isHorizontal={false} metro={{}}       /> */}
       <Footer />
     </>
   );
