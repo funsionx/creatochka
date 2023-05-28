@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
     <footer className="min-w-full rounded-[24px] bg-gray-5 p-[65px]">
       <section className="mb-[30px] flex justify-between">
         <div className="flex">
-          <Image src={logo} alt={"pic"} />
+          <Image src={logo} alt={"pic"} width={60} />
           <div className="ml-[56px] grid grid-cols-2">
             <Link href={"/catalog"}>
               <h6>Каталог помещений</h6>

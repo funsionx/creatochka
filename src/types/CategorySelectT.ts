@@ -22,3 +22,7 @@ export type OptionsT = {
   value: string,
   label: string
 }[]
+export type OptionT = {
+  value: string,
+  label: string
+}

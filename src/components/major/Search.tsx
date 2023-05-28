@@ -5,6 +5,11 @@ import { OnlyCategorySelect } from "@/components/minor/CategorySelect";
 import { LargeButton } from "@/components/minor/Buttons";
 import Subtract from "../../../public/icons/Subtract.svg";
 import Image from "next/image";
+import { OptionT, OptionsT } from "@/types/CategorySelectT";
+import HttpGet from "../api/HttpGet";
+import FieldsRebuilder from "../util/rebuilders/FieldsRebuilder";
+import MetroRebuilder from "../util/rebuilders/MetroRebuilder";
+import ColorCircleOption from "../util/ColorCircleOption";
 
 const options = [
   { value: "chocolate", label: "Chocolate" },
@@ -23,11 +28,21 @@ const Search: React.FC = () => {
     //   phone: phone,
     // });
     // fetch("https://rent.creatochka.cooldev.pro/api/renter/registration")
-    console.log(value.value, value2.value, mulValues);
+    console.log(value.values, value2.value, mulValues);
   };
-  const [value, setValue] = React.useState<(typeof options)[0]>(options[0]);
-  const [value2, setValue2] = React.useState<(typeof options)[0]>(options[0]);
-  const [mulValues, setMulValues] = React.useState<typeof options>([]);
+  const [value, setValue] = React.useState<OptionsT>([]);
+  const [value2, setValue2] = React.useState<OptionT>({value: "", label: "Любая"});
+  const [mulValues, setMulValues] = React.useState<OptionsT>([]);
+  
+  const {
+    data: eventsData,
+  } = HttpGet("https://rent.creatochka.cooldev.pro/api/renter/options/event-types");
+  const {
+    data: metroData,
+    isError,
+    isLoading,
+  } = HttpGet("https://rent.creatochka.cooldev.pro/api/renter/options/metro");
+
   return (
     <main className="min-w-full rounded-[24px] bg-gray-5 p-[65px]">
       <h1 className="mb-[16px] max-w-[70%] text-left text-black-text">
@@ -41,20 +56,21 @@ const Search: React.FC = () => {
         <div className="mb-[65px] rounded-[18px] bg-white p-[40px]">
           <div className="mx-[40px] mb-[24px] flex justify-around gap-[20px]">
             <MulCategorySelect
-              options={options}
+              options={FieldsRebuilder(eventsData)}
               twStyles={"min-w-[100%] min-h-[60px]"}
               categoryType={"Тип мероприятия"}
               blockStyles={"min-w-[30%] "}
               valueMulState={[mulValues, setMulValues]}
-              placeholder={""}
+              placeholder={"Любой"}
             />
-            <OnlyCategorySelect
-              options={options}
+            <MulCategorySelect
+              options={MetroRebuilder(metroData)}
               twStyles={"min-w-[100%] h-[60px]"}
               categoryType={"Расположение"}
               blockStyles={"min-w-[30%]"}
-              valueState={[value, setValue]}
-              placeholder={""}
+              valueMulState={[value, setValue]}
+              placeholder={"Любое"}
+              componentsData={{Option: ColorCircleOption}}
             />
             <OnlyCategorySelect
               options={options}
@@ -70,7 +86,7 @@ const Search: React.FC = () => {
               type="button"
               twStyles="bg-blue-secondary text-blue-primary flex gap-[9px]"
             >
-              <Image src={Subtract} alt={"pic"} />
+              <Image src={Subtract} alt={"pic"} width={20}/>
               Показать на карте
             </LargeButton>
             <LargeButton type="submit" twStyles="bg-blue-primary text-white">

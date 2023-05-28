@@ -59,13 +59,14 @@ const OnlyCategorySelect: React.FC<OnlyCategorySelectT> = (props) => {
         options={options}
         isClearable={true}
         isSearchable={true}
-        defaultValue={options[0]}
+        defaultValue={{value: "", label: "ASfasf"}}
         className={"hover:bg-gray-5" + twStyles}
         value={selected}
         theme={(theme) => ({
           ...theme,
           borderRadius: 12,
         })}
+        styles={customStyles}
         onChange={handleChange}
         placeholder={placeholder}
         classNames={{
