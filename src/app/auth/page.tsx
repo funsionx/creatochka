@@ -12,7 +12,7 @@ const Auth: NextPage = (props: Props) => {
     <main>
       <AuthForm />
       <Link href={"/reg"}>
-        <h5>Зарегестрироватся</h5>
+        <h5 className="flex justify-center">Зарегестрироваться</h5>
       </Link>
     </main>
   );
